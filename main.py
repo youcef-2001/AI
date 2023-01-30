@@ -1,14 +1,11 @@
 
+from barque import Barque
+from barque import Move
 
 
+mybarque = Barque("maBarque",2)
+result =mybarque.possibilities()
+for ele in result :
+    ele.describe()
 
 
-
-
-
-from barque import barque
-
-
-mybarque = barque("maBarque",3,"C","C","C","C","C","C","M","h","M")
-
-print(mybarque.toString())
