@@ -1,7 +1,7 @@
  
 class barque:
 
-    
+
     def __init__( self , nom , places , *arg):
 
       print("I AM A NEW BARQUE !!")
