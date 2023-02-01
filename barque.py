@@ -50,7 +50,7 @@ class Barque:
                     j+=1
             i+=1
 
-        #
+        
         return liste
     
     
@@ -58,10 +58,11 @@ class Barque:
         self.pos=not self.pos
         if(self.pos):
            
-            return EtatNerveux(etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.precedents)
+            etatn= EtatNerveux(etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.precedents)
+            etatn.setPrecd("C"+str(etat.nbrC)+"M"+str(etat.nbrM))
           
         else:
-            return EtatNerveux(etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.precedents)
+            etatn= EtatNerveux(etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.precedents)
 
 
 

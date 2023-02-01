@@ -22,15 +22,16 @@ class Etat :
 class EtatNerveux(Etat):
  
 
- def __init__(self, nbrC: int, nbrM: int,prio:int ,*precd):
+ def __init__(self, nbrC: int, nbrM: int,prio:int ,precd:list[str]):
     super().__init__( nbrC, nbrM)
     self.prio=prio
     self.precedents=precd
 
-def setPrio(self,p):
+ def setPrio(self,p):
     self.prio=p
 
-def setPrecd(self,prec: str):
-    self.precedents=+prec
+ def setPrecd(self,prec: str):
+    
+    self.precedents.append(prec)
 
 
