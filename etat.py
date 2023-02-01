@@ -1,8 +1,7 @@
 
 
 class Etat :
-    nbrCann=3
-    nbrMiss=3
+    
 
     def __init__(self,nbrC:int ,nbrM:int):
        

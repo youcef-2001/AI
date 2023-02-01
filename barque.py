@@ -8,7 +8,9 @@ class Move:
         self.nbr=Move.nbrMoves
         Move.nbrMoves+=1
     def describe(self):
-        print(" Move number"+str(self.nbr)+"\n Missionnaire : "+str(self.missionnaires)+"\n"+" Cannibales   : "+str(self.cannibales))
+        print(" Move number"+str(self.nbr)+"\n Missionnaire : "
+        +str(self.missionnaires)
+        +"\n"+" Cannibales   : "+str(self.cannibales))
 
        
 
@@ -34,7 +36,7 @@ class Barque:
         return "Je suis une Barque  mon Nom :"+self.nom+"\n"+"Mes places :"+str(self.places)+"\n "
 
     def possibilities(self)->list[Move]:
-        liste:list[Move]=[ ]
+        liste:list[Move]=[]
         i=0
         
         while(i<=self.places):
@@ -48,7 +50,7 @@ class Barque:
                     j+=1
             i+=1
 
-        #liste.sort(key=lambda a:a.nbr)
+        #
         return liste
     
     

@@ -3,9 +3,9 @@ from barque import Barque
 from barque import Move
 
 
-mybarque = Barque("maBarque",2)
-result =mybarque.possibilities()
-for ele in result :
+mybarque = Barque("maBarque",3)
+
+for ele in mybarque.liste :
     ele.describe()
 
 
