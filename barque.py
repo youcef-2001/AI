@@ -59,10 +59,11 @@ class Barque:
         if(self.pos):
            
             etatn= EtatNerveux(etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.precedents)
-            etatn.setPrecd("C"+str(etat.nbrC)+"M"+str(etat.nbrM))
+            etatn.setPrecd("/ C:"+str(etat.nbrC)+", M:"+str(etat.nbrM))
           
         else:
             etatn= EtatNerveux(etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.precedents)
+            etatn.setPrecd("/ C:"+str(etat.nbrC)+", M:"+str(etat.nbrM))
 
 
 
