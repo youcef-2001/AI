@@ -56,13 +56,13 @@ class Barque:
     def changeDeCote(self,etat:EtatNerveux,move:int):
         
         if(etat.posBarque):#aller
-            etatn= EtatNerveux(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+1,etat.precedents,not etat.posBarque)
+            etatn= EtatNerveux(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+10,etat.precedents,False)
             etatn.setPrecd(move)
             return etatn
 
           
         else:#retour
-            etatn= EtatNerveux(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+1,etat.precedents,not etat.posBarque)
+            etatn= EtatNerveux(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+10,etat.precedents,True)
             etatn.setPrecd(move)
             return etatn
     def riveSafe(self,nbrM,nbrC):
@@ -71,7 +71,7 @@ class Barque:
         else:
             return(nbrM>=nbrC)and(nbrC>=0)and(nbrM>0)
 
-    def possibleMove(self,etat:EtatNerveux,move:int):
+    def possibleMove(self,etat:EtatNerveux,move:int) -> bool:
             nbrCRes=etat.nbrC-self.liste[move].cannibales
             nbrMRes=etat.nbrM-self.liste[move].missionnaires
             if(etat.posBarque):#aller
@@ -86,4 +86,3 @@ class Barque:
                
 
 
-        

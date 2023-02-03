@@ -18,6 +18,7 @@ class ListePrio :
         if(self.size>0):
          e:EtatNerveux=self.liste.pop(0)
          self.size=self.size-1
+         self.sortListePrio()
          return e
 
 
