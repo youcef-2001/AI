@@ -1,11 +1,25 @@
 
-from barque import Barque
-from barque import Move
+from barque import Barque,Move
+from etat import EtatNerveux
+from listeprio import ListePrio
 
 
-mybarque = Barque("maBarque",3)
+mybarque = Barque("maBarque",2)
+etatinit=EtatNerveux(3,3,3,0,None,True)
 
-for ele in mybarque.liste :
-    ele.describe()
+listeprio=ListePrio([etatinit],1)
 
+rangy=int((mybarque.places+1)*(mybarque.places+2)/2-1)#nombre de Moves
+etatact:EtatNerveux=listeprio.remove()
 
+while(not etatact.finale):
+    for move in  range(rangy):
+        
+        if(mybarque.possibleMove(etatact,move)):
+            etatneuf=mybarque.changeDeCote(etatact,move)
+            if not etatneuf.interdit:
+                listeprio.add(etatneuf)
+                print(move)
+    etatact=listeprio.remove()
+
+print(etatact.precedents)
