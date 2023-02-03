@@ -28,9 +28,6 @@ class ListePrio :
         
 
     
-#test=ListePrio([EtatNerveux(3,3,3,0,[])],1)
-#test.add(EtatNerveux(3,2,2,1,[1]))
-#print(test.remove().nbrC)
-#print(test.remove().nbrC)
+
 
         
