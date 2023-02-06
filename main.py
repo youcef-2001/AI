@@ -12,7 +12,7 @@ listeprio=ListePrio([etatinit],1)
 rangy=int((mybarque.places+1)*(mybarque.places+2)/2-1)#nombre de Moves
 etatact:EtatNerveux=listeprio.remove()
 
-while( etatact.prio<102 ):
+while( not etatact.finale):
     for move in  range(rangy):
         
         if(mybarque.possibleMove(etatact,move)):

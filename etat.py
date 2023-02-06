@@ -20,8 +20,6 @@ class Etat :
             self.finale=False
 
 
- 
-  
 
 class EtatNerveux(Etat):
  
@@ -40,5 +38,17 @@ class EtatNerveux(Etat):
  def setPrecd(self,prec: int):
     
     self.precedents.append(prec)
+ 
+ def __eq__(self, etat: Etat) -> bool:
+     
+    return( self.nbr ==etat.nbr) and (self.nbrC == etat.nbrC)and (self.nbrM == etat.nbrM)and (self.posBarque == etat.posBarque)
 
-
+class EtatSommet(EtatNerveux):
+    def __init__(self, nbr: int, nbrC: int, nbrM: int, prio: int, precd: list[int], posbarque: bool):
+        super().__init__(nbr, nbrC, nbrM, prio, precd, posbarque)
+        self.marque=False
+    
+    
+    def marquer(self):
+        self.marquer=True
+  

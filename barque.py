@@ -1,4 +1,4 @@
-from etat import EtatNerveux
+from etat import EtatNerveux, EtatSommet
 
 class Move:
     nbrMoves=0
@@ -27,7 +27,7 @@ class Barque:
       self.nom=nom
       self.places=places
       self.liste=self.possibilities()
-      
+      self.rangy=int((self.places+1)*(self.places+2)/2-1)#nombre de Moves
      
 
 
@@ -53,16 +53,16 @@ class Barque:
         return liste
     
     
-    def changeDeCote(self,etat:EtatNerveux,move:int):
+    def changeDeCote(self,etat:EtatSommet,move:int):
         
         if(etat.posBarque):#aller
-            etatn= EtatNerveux(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+10,etat.precedents,False)
+            etatn= EtatSommet(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+10,etat.precedents.copy(),False)
             etatn.setPrecd(move)
             return etatn
 
           
         else:#retour
-            etatn= EtatNerveux(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+10,etat.precedents,True)
+            etatn= EtatSommet(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+10,etat.precedents.copy(),True)
             etatn.setPrecd(move)
             return etatn
     def riveSafe(self,nbrM,nbrC):
