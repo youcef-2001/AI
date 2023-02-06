@@ -13,11 +13,11 @@ class Etat :
             self.interdit=True
         else:
             self.interdit=False
-
+        
+            self.finale=False
         if nbrC==0 and nbrM==0:
             self.finale=True
-        else:
-            self.finale=False
+        
 
 
  
