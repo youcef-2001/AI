@@ -53,18 +53,20 @@ class Barque:
         return liste
     
     
-    def changeDeCote(self,etat:EtatNerveux,move:int):
+    def changeDeCote(self,etat:EtatNerveux,move:int):#2 missionnaires
         e=etat.precedents.copy()
         if(etat.posBarque):#aller
             etatn= EtatNerveux(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+1,e,False)
             etatn.setPrecd(move)
-            return etatn
-
-          
+            return etatn        
         else:#retour
             etatn= EtatNerveux(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+1,e,True)
             etatn.setPrecd(move)
             return etatn
+
+
+
+
     def riveSafe(self,nbrM,nbrC):
         if nbrM==0:#Rive1
             return(nbrC>=0)

@@ -20,10 +20,13 @@ class Etat :
         
     def describe(self):
         if self.posBarque:
+            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
             print("=Cannibales : "+str(self.nbrC)+"--------------"+"=Cannibales : "+str(self.nbr-self.nbrC)+"\n----Barque------------------------------"+"\n=Missionnaires : "+str(self.nbrM)+"---------"+"=Missionnaires : "+str(self.nbr-self.nbrM))
+            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         else:
-             print("=Cannibales : "+str(self.nbrC)+"--------------"+"=Cannibales : "+str(self.nbr-self.nbrC)+"\n-----------------------------Barque-----"+"\n=Missionnaires : "+str(self.nbrM)+"---------"+"=Missionnaires : "+str(self.nbr-self.nbrM))
-       
+            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            print("=Cannibales : "+str(self.nbrC)+"--------------"+"=Cannibales : "+str(self.nbr-self.nbrC)+"\n-----------------------------Barque-----"+"\n=Missionnaires : "+str(self.nbrM)+"---------"+"=Missionnaires : "+str(self.nbr-self.nbrM))
+            print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
  
   
 
