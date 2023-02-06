@@ -18,13 +18,17 @@ class Etat :
         if nbrC==0 and nbrM==0:
             self.finale=True
         
-
-
+    def describe(self):
+        if self.posBarque:
+            print("=Cannibales : "+str(self.nbrC)+"--------------"+"=Cannibales : "+str(self.nbr-self.nbrC)+"\n----Barque------------------------------"+"\n=Missionnaires : "+str(self.nbrM)+"---------"+"=Missionnaires : "+str(self.nbr-self.nbrM))
+        else:
+             print("=Cannibales : "+str(self.nbrC)+"--------------"+"=Cannibales : "+str(self.nbr-self.nbrC)+"\n-----------------------------Barque-----"+"\n=Missionnaires : "+str(self.nbrM)+"---------"+"=Missionnaires : "+str(self.nbr-self.nbrM))
+       
  
   
 
 class EtatNerveux(Etat):
- 
+
 
  def __init__(self, nbr:int ,nbrC: int, nbrM: int,prio:int ,precd:list[int],posbarque:bool)  :
     super().__init__(nbr, nbrC, nbrM,posbarque)
