@@ -25,7 +25,7 @@ def recurProf(etatinit:EtatSommet,parcourProf:list[EtatSommet]) :
                 b=False   
        if b:        
             recurProf(etat,parcourProf)
-    print("fin")
+    
     
 
 etat=EtatSommet(3,3,3,0,[],True)
