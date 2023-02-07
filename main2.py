@@ -1,14 +1,34 @@
+
 from barque import Barque
 from etat import EtatSommet
-
-places=10
-nbrT=50
-nbrc=0
-nbrm=0
-pos=False
-unebarque=Barque("profondeur",places)
+import sys
+import os
+# import sleep to show output for some time period
 
 
+
+
+places=2
+nbrT=3
+pos=True
+if sys.argv:
+    if "-nbr" in sys.argv:
+        nb=sys.argv.index("-nbr") 
+        nbrT=int(sys.argv.pop(nb+1))
+       
+    if "-places" in sys.argv:
+        nb=sys.argv.index("-places") 
+        places=int(sys.argv.pop(nb+1))
+       
+    
+else:
+    print("Execution par Defaut !")
+
+
+    
+
+
+unebarque=Barque(places)
 def recurProf(etatinit:EtatSommet,parcourProf:list[EtatSommet]) :
     
     if parcourProf ==None:
@@ -37,17 +57,26 @@ def recurProf(etatinit:EtatSommet,parcourProf:list[EtatSommet]) :
             parcourProf.pop(index)
             recurProf(etat,parcourProf)
     
-    
 
-etat=EtatSommet(nbrT,nbrc,nbrm,0,[],pos)
+etat=EtatSommet(nbrT,nbrT,nbrT,0,[],pos)
 
 parc:list[EtatSommet]=[]
 recurProf(etat,parc)
+listemoves=[]
 for etat in parc:
-    if etat.nbrC==nbrT and etat.nbrM==nbrT :
-        print("initiale"+str(etat.precedents))
+    
     if etat.finale :
-        print("finale "+str(etat.precedents))
+        listemoves.extend(etat.precedents)
 
+print(listemoves)
+#################
+###############AFFICHAGE
 
+ 
+def refresh(dess):
+    if os.name == 'posix': 
+        os.system("clear")
+    else:
+        os.system("cls")
+    print(dess)
 

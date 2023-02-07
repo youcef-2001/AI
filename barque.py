@@ -21,10 +21,8 @@ class Move:
 class Barque:
 
 
-    def __init__( self , nom , places):
-
-      print("I AM A NEW BARQUE !!")
-      self.nom=nom
+    def __init__( self  , places):
+      
       self.places=places
       self.liste=self.possibilities()
       self.rangy=int((self.places+1)*(self.places+2)/2-1)#nombre de Moves
