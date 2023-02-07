@@ -43,6 +43,7 @@ class EtatNerveux(Etat):
      
     return( self.nbr ==etat.nbr) and (self.nbrC == etat.nbrC)and (self.nbrM == etat.nbrM)and (self.posBarque == etat.posBarque)
 
+
 class EtatSommet(EtatNerveux):
     def __init__(self, nbr: int, nbrC: int, nbrM: int, prio: int, precd: list[int], posbarque: bool):
         super().__init__(nbr, nbrC, nbrM, prio, precd, posbarque)
@@ -52,3 +53,5 @@ class EtatSommet(EtatNerveux):
     def marquer(self):
         self.marquer=True
   
+    def dijkstraBest(self,etat:EtatNerveux):
+        return self.prio-etat.prio

@@ -1,39 +1,53 @@
 from barque import Barque
 from etat import EtatSommet
 
-places=2
+places=10
+nbrT=50
+nbrc=0
+nbrm=0
+pos=False
 unebarque=Barque("profondeur",places)
 
 
 def recurProf(etatinit:EtatSommet,parcourProf:list[EtatSommet]) :
-    #etatinit.marquer()
+    
     if parcourProf ==None:
         parcourProf:list[EtatSommet]=list()
     
-    parcourProf.append(etatinit)
-    if etatinit.finale:
-        return parcourProf
+    parcourProf.append(etatinit)    
     voisin:list[EtatSommet]=list()
     for move in range(unebarque.rangy):
         if unebarque.possibleMove(etatinit,move):
+           
             voisin.append(unebarque.changeDeCote(etatinit,move))
     
     for etat in voisin :
        b=True#contientpas
+       c=10
+       index=0
        for etat2 in parcourProf:
             if etat.__eq__(etat2):
-                b=False   
+                b=False
+                c=etat.dijkstraBest(etat2)
+                index=parcourProf.index(etat2)
        if b:        
+            recurProf(etat,parcourProf)
+       else:
+        if(c<0):
+            parcourProf.pop(index)
             recurProf(etat,parcourProf)
     
     
 
-etat=EtatSommet(3,3,3,0,[],True)
+etat=EtatSommet(nbrT,nbrc,nbrm,0,[],pos)
+
 parc:list[EtatSommet]=[]
 recurProf(etat,parc)
 for etat in parc:
-    if etat.finale:
-        print(etat.precedents)
+    if etat.nbrC==nbrT and etat.nbrM==nbrT :
+        print("initiale"+str(etat.precedents))
+    if etat.finale :
+        print("finale "+str(etat.precedents))
 
 
 
