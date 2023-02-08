@@ -3,10 +3,6 @@ from barque import Barque
 from etat import EtatSommet
 import sys
 import os
-# import sleep to show output for some time period
-
-
-
 
 places=2
 nbrT=3
@@ -21,14 +17,21 @@ if sys.argv:
         places=int(sys.argv.pop(nb+1))
        
     
-else:
-    print("Execution par Defaut !")
+
 
 
     
 
 
 unebarque=Barque(places)
+def refresh(dess:list()):
+    if os.name == 'posix': 
+        os.system("clear")
+    else:
+        os.system("cls")
+    for aff in dess:
+        aff()
+
 def recurProf(etatinit:EtatSommet,parcourProf:list[EtatSommet]) :
     
     if parcourProf ==None:
@@ -63,20 +66,36 @@ etat=EtatSommet(nbrT,nbrT,nbrT,0,[],pos)
 parc:list[EtatSommet]=[]
 recurProf(etat,parc)
 listemoves=[]
+siz=0
 for etat in parc:
     
     if etat.finale :
         listemoves.extend(etat.precedents)
+        siz=etat.prio
 
-print(listemoves)
-#################
-###############AFFICHAGE
+
+
+###############AFFICHAGE#################
 
  
-def refresh(dess):
-    if os.name == 'posix': 
-        os.system("clear")
+if siz==0:
+    print("No Solution Founded!")
+    exit(0)
+etat=EtatSommet(nbrT,nbrT,nbrT,0,[],pos)
+aff=[]
+aff.append(etat)
+etatn=etat
+for m in listemoves:
+  
+    etatn=unebarque.changeDeCote(etatn,m)
+    aff.append(etatn)
+    
+
+state=0
+while state  < siz+1: 
+    refresh([aff[state].describe,print,print,print,print])    
+    if ( not input("clic enter for next or 'p' for previous  ")=="P"):
+        state=state+1
     else:
-        os.system("cls")
-    print(dess)
+        state=state-1
 

@@ -54,13 +54,13 @@ class Barque:
     def changeDeCote(self,etat:EtatSommet,move:int):
         
         if(etat.posBarque):#aller
-            etatn= EtatSommet(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+10,etat.precedents.copy(),False)
+            etatn= EtatSommet(etat.nbr,etat.nbrC-self.liste[move].cannibales,etat.nbrM-self.liste[move].missionnaires,etat.prio+1,etat.precedents.copy(),False)
             etatn.setPrecd(move)
             return etatn
 
           
         else:#retour
-            etatn= EtatSommet(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+10,etat.precedents.copy(),True)
+            etatn= EtatSommet(etat.nbr,etat.nbrC+self.liste[move].cannibales,etat.nbrM+self.liste[move].missionnaires,etat.prio+1,etat.precedents.copy(),True)
             etatn.setPrecd(move)
             return etatn
     def riveSafe(self,nbrM,nbrC):
